@@ -14,7 +14,7 @@ PACKAGES="Carla"
 DO_TARBALL=true
 DO_CLEAN_INTERMEDIATE=false
 PROPS_MAP_NAME=PropsMap
-PACKAGE_CONFIG=Shipping
+PACKAGE_CONFIG=Development
 
 OPTS=`getopt -o h --long help,config:,no-zip,clean-intermediate,packages: -n 'parse-options' -- "$@"`
 
@@ -73,7 +73,7 @@ REPOSITORY_TAG=$(get_git_repository_version)
 
 RELEASE_BUILD_FOLDER=${CARLA_DIST_FOLDER}/CARLA_${PACKAGE_CONFIG}_${REPOSITORY_TAG}
 
-if [[ ${PACKAGE_CONFIG} == "Shipping" ]] ; then
+if [[ ${PACKAGE_CONFIG} == "Development" ]] ; then
   RELEASE_PACKAGE_PATH=${CARLA_DIST_FOLDER}/CARLA_${REPOSITORY_TAG}.tar.gz
 else
   RELEASE_PACKAGE_PATH=${CARLA_DIST_FOLDER}/CARLA_${PACKAGE_CONFIG}_${REPOSITORY_TAG}.tar.gz
