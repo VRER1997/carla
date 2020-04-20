@@ -137,15 +137,21 @@ pipeline
                                     archiveArtifacts 'CarlaUE4.log'
                                     junit 'Build/test-results/smoke-tests-*.xml'
                                     deleteDir()
-                                    node('master')
+                                }
+                            }
+                        }
+                        post
+                        {
+                            always
+                            {
+                                node('master')
+                                {
+                                    script
                                     {
-                                        script
-                                        {
-                                            JOB_ID = "${env.BUILD_TAG}"
-                                            jenkinsLib = load("/home/jenkins/jenkins.groovy")
-                                            
-                                            jenkinsLib.DeleteUbuntuTestNode(JOB_ID)
-                                        }
+                                        JOB_ID = "${env.BUILD_TAG}"
+                                        jenkinsLib = load("/home/jenkins/jenkins.groovy")
+                                        
+                                        jenkinsLib.DeleteUbuntuTestNode(JOB_ID)
                                     }
                                 }
                             }
